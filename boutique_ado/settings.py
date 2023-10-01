@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(%+lrth)nf9brqh-r$lre8ou&#w%*ludioha7_uevi+@d#i)sl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-struk49-boutiqueadov1-ep9sa7ytna1.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['8000-struk49-boutiqueadov1-fv9rbmndyzc.ws-eu105.gitpod.io']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -58,12 +59,15 @@ ROOT_URLCONF = 'boutique_ado.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request',# requested by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -72,7 +76,6 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
